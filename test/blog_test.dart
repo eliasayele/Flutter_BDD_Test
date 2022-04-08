@@ -9,6 +9,8 @@ import './step/i_see_text.dart';
 import './step/i_see_icon.dart';
 import './step/i_tap_icon.dart';
 import './step/i_tap_icon_twice.dart';
+import './step/the_screenshot_is_verified.dart';
+import './step/i_see.dart';
 
 void main() {
   Future<void> bddSetUp(WidgetTester tester) async {
@@ -30,6 +32,11 @@ void main() {
       await bddSetUp(tester);
       await iTapIconTwice(tester, Icons.add);
       await iSeeText(tester, 'two');
+    });
+    testWidgets('''The counter is green''', (tester) async {
+      await bddSetUp(tester);
+      await theScreenshotIsVerified(tester, 'counter');
+      await iSee(tester, 'two',param3);
     });
   });
 }
